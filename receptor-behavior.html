@@ -1,7 +1,11 @@
 <link rel="import" href="../polymer/polymer.html">
 <script>
+  'use strict';
+
   var WebEnzymes = WebEnzymes || {};
+
   WebEnzymes.ReceptorBehavior = {
+
     properties: {
       activateEvent: {
         type: String,
@@ -17,7 +21,7 @@
       this._teardownReceptor();
     },
 
-    get _receptorTarget() {
+    get receptorTarget() {
       var parentNode = Polymer.dom(this).parentNode;
       // Guard against element being detached while render was queued
       if (parentNode) {
@@ -30,7 +34,7 @@
         return;
       }
       this._teardownReceptor();
-      var el = this._receptorTarget;
+      var el = this.receptorTarget;
       if (this.activateEvent && el) {
         var receptor = {
           eventName: this.activateEvent,
@@ -57,21 +61,19 @@
       }
     },
 
-    // Extension points for sub-classes with default behaviour
+    // Extension point for sub-classes with default behaviour
     _activateFilter: function(event) {
       return event.detail && event.detail.value && event.detail.value === this;
     },
 
-    // Extension points for sub-classes with default behaviour
+    // Extension point for sub-classes with default behaviour
     _deactivateFilter: function(event) {
       return event.detail && event.detail.value && event.detail.value !== this;
     },
 
     // Extension points for sub-classes
-    /* eslint-disable no-unused-vars */
-    _activate: function() { },
-    _deactivate: function() { }
-    /* eslint-enable no-unused-vars */
+    _activate: function() {},
+    _deactivate: function() {}
 
   };
 </script>
