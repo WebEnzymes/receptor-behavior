@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "...",
   "main": "receptor-behavior.html",
-  "scripts": {},
   "repository": "webenzymes/receptor-behavior",
   "keywords": [
     "web-components",
@@ -31,9 +30,12 @@
     "bower": "1.7.x",
     "git-scripts": "0.2.x",
     "napa": "^2.3.0",
-    "polylint": "2.10.x",
+    "polylint": "^2.10.1",
     "polyserve": "0.10.x",
     "validate-commit": "2.1.x",
     "web-component-tester": "4.2.x"
+  },
+  "scripts": {
+    "lint": "polylint -b bower_components/ --no-recursion --input receptor-behavior.html"
   }
 }
